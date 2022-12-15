@@ -1,0 +1,81 @@
+﻿@model List<Escuelita.Models.ViewModels.ListaAlumnoViewModel>
+
+@{
+    ViewBag.Title = "Lista de Alumnos";
+}
+
+<br />
+@if (TempData["Success"] != null)
+{
+    <p class="alert alert-success" id="successMessage">
+        @TempData["Success"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </p>
+}
+
+@if (TempData["EditSuccess"] != null)
+{
+    <p class="alert alert-info" id="successMessage">
+        @TempData["EditSuccess"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </p>
+}
+
+@if (TempData["DeleteSuccess"] != null)
+{
+    <p class="alert alert-danger" id="successMessage">
+        @TempData["DeleteSuccess"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </p>
+}
+
+<h2>@ViewBag.Title</h2>
+
+@*<p>
+        @Html.ActionLink("Crear Alumno", "Create", "Alumno", null, new { @class = "btn btn-primary" })
+    </p>*@
+<div class="row" style="padding:10px">
+    <a href="~/Alumnos/Nuevo" class="btn btn-primary">Crear Alumno</a>
+</div>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Apellido
+        </th>
+        <th>
+            Matricula
+        </th>
+        <th>Acciones</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Nombre_Alumno
+            </td>
+            <td>
+                @item.Apellido_Alumno
+            </td>
+            <td>
+                @item.Matricula
+                @*</td>
+                    <td>*@
+            <td>
+                <a class="btn btn-default" href="~/Alumnos/Editar/@item.Id_Alumno">Editar</a>
+                <a class="btn btn-danger" href="~/Alumnos/Eliminar/@item.Id_Alumno">Eliminar</a>
+            </td>
+        </tr>
+    }
+
+</table>
