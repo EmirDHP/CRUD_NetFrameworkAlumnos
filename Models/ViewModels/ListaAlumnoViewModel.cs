@@ -15,5 +15,8 @@ namespace Escuelita.Models.ViewModels
         public bool Espanol { get; set; }
         public bool Matematicas { get; set; }
         public bool Ciencias { get; set; }
+
+
+        public string Materia_Nombre { get; set; }
     }
 }

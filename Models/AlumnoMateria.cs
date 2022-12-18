@@ -12,9 +12,10 @@ namespace Escuelita.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Materia
+    public partial class AlumnoMateria
     {
-        public int id_materia { get; set; }
-        public string materia_nombre { get; set; }
+        public int id_AlumnoMaterias { get; set; }
+        public Nullable<int> alumno_id { get; set; }
+        public Nullable<int> materia_id { get; set; }
     }
 }

@@ -136,6 +136,9 @@
     <Compile Include="Models\Alumno.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AlumnoMateria.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -154,8 +157,10 @@
     <Compile Include="Models\Materia.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ViewModels\AlumnosViewModel.cs" />
+    <Compile Include="Models\ViewModels\AlumnoMateriaViewModel.cs" />
+    <Compile Include="Models\ViewModels\AlumnoViewModel.cs" />
     <Compile Include="Models\ViewModels\ListaAlumnoViewModel.cs" />
+    <Compile Include="Models\ViewModels\ListaAlumnoMateriaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +219,8 @@
     <Content Include="Views\Alumnos\Index.cshtml" />
     <Content Include="Views\Alumnos\Nuevo.cshtml" />
     <Content Include="Views\Alumnos\Editar.cshtml" />
+    <Content Include="Views\Alumnos\AsignarMateriasAlumnos.cshtml" />
+    <Content Include="Views\Alumnos\TablaAlumnoMaterias.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -252,7 +259,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50871</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44345/</IISUrl>
+          <IISUrl>http://localhost:50961/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

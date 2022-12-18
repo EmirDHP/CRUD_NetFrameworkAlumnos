@@ -1,4 +1,4 @@
-﻿@model Escuelita.Models.ViewModels.AlumnosViewModel
+﻿@model Escuelita.Models.ViewModels.AlumnoViewModel
 @{
     ViewBag.Title = "Editar Alumno";
 }
@@ -26,39 +26,32 @@
                 @Html.ValidationMessageFor(d => d.Matricula, null, new { @class = "red" })
             </div>
 
+            <div class="form-group">
+                <label>Materias</label>
+                <div>
+                    <label class="checkbox-inline">
+                        @Html.CheckBoxFor(d => d.Ingles)
+                        Ingles
+                    </label>
+                    <label class="checkbox-inline">
+                        @Html.CheckBoxFor(d => d.Espanol)
+                        Español
+                    </label>
+                    <label class="checkbox-inline">
+                        @Html.CheckBoxFor(d => d.Matematicas)
+                        Matematicas
+                    </label>
+                    <label class="checkbox-inline">
+                        @Html.CheckBoxFor(d => d.Ciencias)
+                        Ciencias
+                    </label>
+                </div>
+            </div>
 
-
-
-
-        </div>
-        <div class="form-group">
-            <label>Materias</label>
-            <div>
-                <label class="checkbox-inline">
-                    @Html.CheckBoxFor(d => d.Ingles)
-                    Ingles
-                </label>
-                <label class="checkbox-inline">
-                    @Html.CheckBoxFor(d => d.Espanol)
-                    Español
-                </label>
-                <label class="checkbox-inline">
-                    @Html.CheckBoxFor(d => d.Matematicas)
-                    Matematicas
-                </label>
-                <label class="checkbox-inline">
-                    @Html.CheckBoxFor(d => d.Ciencias)
-                    Ciencias
-                </label>
+            <div style="text-align:right">
+                @Html.ActionLink("Regresar", "Index", "Alumnos", null, new { @class = "btn btn-primary", @style = "text-align:right" })
+                <input type="submit" value="Guardar" class="btn btn-success" />
             </div>
         </div>
-
-
-        <div style="text-align:right">
-            @Html.ActionLink("Regresar", "Index", "Alumnos", null, new { @class = "btn btn-primary", @style = "text-align:right" })
-            <input type="submit" value="Guardar" class="btn btn-success" />
-        </div>
     </div>
-
-
 }

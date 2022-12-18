@@ -5,6 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="SchoolModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AlumnoMaterias">
+          <Key>
+            <PropertyRef Name="id_AlumnoMaterias" />
+          </Key>
+          <Property Name="id_AlumnoMaterias" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="alumno_id" Type="int" />
+          <Property Name="materia_id" Type="int" />
+        </EntityType>
         <EntityType Name="Alumnos">
           <Key>
             <PropertyRef Name="id_alumno" />
@@ -23,9 +31,10 @@
             <PropertyRef Name="id_materia" />
           </Key>
           <Property Name="id_materia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="materia" Type="varchar" MaxLength="50" />
+          <Property Name="materia_nombre" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="SchoolModelStoreContainer">
+          <EntitySet Name="AlumnoMaterias" EntityType="Self.AlumnoMaterias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Alumnos" EntityType="Self.Alumnos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Materia" EntityType="Self.Materia" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -51,12 +60,21 @@
             <PropertyRef Name="id_materia" />
           </Key>
           <Property Name="id_materia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="materia1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="materia_nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="SchoolEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Alumnos" EntityType="Self.Alumno" />
           <EntitySet Name="Materias" EntityType="Self.Materia" />
+          <EntitySet Name="AlumnoMaterias" EntityType="SchoolModel.AlumnoMateria" />
         </EntityContainer>
+        <EntityType Name="AlumnoMateria">
+          <Key>
+            <PropertyRef Name="id_AlumnoMaterias" />
+          </Key>
+          <Property Name="id_AlumnoMaterias" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="alumno_id" Type="Int32" />
+          <Property Name="materia_id" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -80,8 +98,17 @@
           <EntitySetMapping Name="Materias">
             <EntityTypeMapping TypeName="SchoolModel.Materia">
               <MappingFragment StoreEntitySet="Materia">
+                <ScalarProperty Name="materia_nombre" ColumnName="materia_nombre" />
                 <ScalarProperty Name="id_materia" ColumnName="id_materia" />
-                <ScalarProperty Name="materia1" ColumnName="materia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AlumnoMaterias">
+            <EntityTypeMapping TypeName="SchoolModel.AlumnoMateria">
+              <MappingFragment StoreEntitySet="AlumnoMaterias">
+                <ScalarProperty Name="materia_id" ColumnName="materia_id" />
+                <ScalarProperty Name="alumno_id" ColumnName="alumno_id" />
+                <ScalarProperty Name="id_AlumnoMaterias" ColumnName="id_AlumnoMaterias" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

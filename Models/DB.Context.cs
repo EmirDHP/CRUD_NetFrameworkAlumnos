@@ -27,5 +27,6 @@ namespace Escuelita.Models
     
         public virtual DbSet<Alumno> Alumnos { get; set; }
         public virtual DbSet<Materia> Materias { get; set; }
+        public virtual DbSet<AlumnoMateria> AlumnoMaterias { get; set; }
     }
 }

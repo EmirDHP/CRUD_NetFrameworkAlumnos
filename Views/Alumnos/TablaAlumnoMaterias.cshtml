@@ -1,0 +1,41 @@
+﻿@model List<Escuelita.Models.ViewModels.ListaAlumnoViewModel>
+
+@{ 
+    Layout = "";
+}
+
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Apellido
+        </th>
+        <th>
+            Matricula
+        </th>
+        <th>
+            Materias
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Nombre_Alumno
+            </td>
+            <td>
+                @item.Apellido_Alumno
+            </td>
+            <td>
+                @item.Matricula
+            <td>
+                @item.Materia_Nombre
+            </td>
+        </tr>
+    }
+</table>

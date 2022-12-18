@@ -1,0 +1,102 @@
+﻿@model Escuelita.Models.ViewModels.AlumnoMateriaViewModel
+@{
+    ViewBag.Title = "AsignarMateriasAlumnos";
+}
+
+<h2>Asignar Materias a Alumnos</h2>
+
+@using (Html.BeginForm("AsignarMateriasAlumnos", "Alumnos", FormMethod.Post))
+{
+    <div class="container">
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(model => model.id_NombreAlumno, new { @class = "control-label" })
+                @Html.DropDownListFor(model => model.id_NombreAlumno, Model.ListaAlumnos, new { @class = "form-control", @id = "idAlumno" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                @Html.LabelFor(model => model.id_NombreMateria, new { @class = "control-label" })
+                <br />
+                <table style="width:100%" id="tablaMaterias">
+                    @foreach (var item in Model.ListaMaterias)
+                    {
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="@item.materia" value="@item.id_materia" checked="@item.IsSelected" /> @item.materia
+                            </td>
+                        </tr>
+                    }
+                </table>
+
+                <div>
+                    <br />
+                    <input type="button" value="Guardar" name="Save" id="btnGuardar" class="btn btn-primary" />
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+}
+
+<div>
+    @{
+        Html.RenderAction("TablaAlumnoMaterias", "Alumnos");
+    }
+</div>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnGuardar").click(function () {
+            AsignarMateriasAlumnos();
+        });
+    });
+
+    function AsignarMateriasAlumnos() {
+
+        var ListaMateriasId = [];
+
+        $.each($("#tablaMaterias input[type=checkbox]:checked"),
+            function (index, data) {
+                if (data.checked === true) {
+
+                    //var id_materia = $(this).val();
+                    //var materia = $(this).attr('name');
+                    //alert(id_materia + " " + materia);
+
+                    ListaMateriasId.push($(this).val());
+                }
+            });
+
+        $.ajax({
+            async: true,
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json; charset=uft-8',
+            url: '/Alumnos/AsignarMateriasAlumnos',
+            data: JSON.stringify({ id_alumno: $("#idAlumno").val(), ListaMateriasId: ListaMateriasId }),
+            success: function (data) {
+                debugger;
+                if (data.success === true) {
+                    alert(data.message);
+                    ResetCheckbox()
+                }
+            },
+            error: function () {
+                alert('Hay un problema para procesar tu solicitud.')
+            }
+        });
+    }
+
+    function ResetCheckbox() {
+        $.each($("#tablaMaterias input[type=checkbox]:checked"),
+            function (index, data) {
+                if (data.checked === true) {
+                    $(this).prop('checked', false);
+                }
+            });
+        $("#idAlumno").val(1)
+    }
+</script>

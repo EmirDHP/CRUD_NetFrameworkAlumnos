@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Escuelita.Models.ViewModels
 {
-    public class AlumnosViewModel
+    public class AlumnoViewModel
     {
         public int Id_Alumno { get; set; }
         [Required]
@@ -29,5 +29,11 @@ namespace Escuelita.Models.ViewModels
 
         [Display(Name = "Ciencias")]
         public bool Ciencias { get; set; }
+
+
+
+
+        //[Display(Name = "Nombre Materia")]
+        //public string Materia_Nombre { get; set; }
     }
 }
