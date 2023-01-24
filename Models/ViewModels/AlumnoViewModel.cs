@@ -29,11 +29,5 @@ namespace Escuelita.Models.ViewModels
 
         [Display(Name = "Ciencias")]
         public bool Ciencias { get; set; }
-
-
-
-
-        //[Display(Name = "Nombre Materia")]
-        //public string Materia_Nombre { get; set; }
     }
 }

@@ -37,9 +37,6 @@
 
 <h2>@ViewBag.Title</h2>
 
-@*<p>
-        @Html.ActionLink("Crear Alumno", "Create", "Alumno", null, new { @class = "btn btn-primary" })
-    </p>*@
 <div class="row" style="padding:10px">
     <a href="~/Alumnos/Nuevo" class="btn btn-primary">Crear Alumno</a>
 </div>
@@ -69,8 +66,6 @@
             </td>
             <td>
                 @item.Matricula
-                @*</td>
-                    <td>*@
             <td>
                 <a class="btn btn-default" href="~/Alumnos/Editar/@item.Id_Alumno">Editar</a>
                 <a class="btn btn-danger" href="~/Alumnos/Eliminar/@item.Id_Alumno">Eliminar</a>
